@@ -1,0 +1,24 @@
+.field-date .field__input-wrapper {
+	align-self: flex-start;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+.input-data-icon {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+	cursor: text;
+}
+.date-wrapper .field__input {
+  color: #1b1b1b;
+  padding-right: 0;
+}
+.input-date {
+  padding: 10px 10px;
+  border: 1px solid #e4e5e7;
+  border-radius: 7px;
+  font-size: 15px;
+  line-height: 18px;
+}

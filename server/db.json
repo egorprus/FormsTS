@@ -1,0 +1,100 @@
+{
+  "disctionary": {
+    "regionOptions": [
+      {
+        "value": "a",
+        "label": "а"
+      },
+      {
+        "value": "b",
+        "label": "б"
+      },
+      {
+        "value": "c",
+        "label": "в"
+      }
+    ],
+		"sexOptions": [
+			{
+				"value": "m",
+				"label": "М"
+			},
+			{
+				"value": "f",
+				"label": "Ж"
+			}
+		],
+		"countryOptions": [
+			{
+				"value": "rus",
+				"label": "Россия"
+			},
+			{
+				"value": "bel",
+				"label": "Беларусь"
+			},
+			{
+				"value": "usa",
+				"label": "США"
+			},
+			{
+				"value": "ger",
+				"label": "Германия"
+			}
+		],
+		"ownershipTypeOptions": [
+			{
+				"value": "ip",
+				"label": "Индивидуальный предприниматель (ИП)"
+			},
+			{
+				"value": "ooo",
+				"label": "Общество с ограниченной ответственностью (ООО)"
+			}
+		],
+		"citizenshipOptions": [
+			{
+				"value": "rus",
+				"label": "Российское"
+			},
+			{
+				"value": "bel",
+				"label": "Белорусское"
+			},
+			{
+				"value": "usa",
+				"label": "Американское"
+			},
+			{
+				"value": "ger",
+				"label": "Немецкое"
+			}
+		],
+		"cityOptions": [
+			{
+				"value": "stPetersburg",
+				"label": "Санкт-Петербург"
+			},
+			{
+				"value": "moscow",
+				"label": "Москва"
+			},
+			{
+				"value": "kazan",
+				"label": "Казань"
+			},
+			{
+				"value": "novosibirsk",
+				"label": "Новосибирск"
+			},
+			{
+				"value": "vladivostok",
+				"label": "Владивосток"
+			},
+			{
+				"value": "sochi",
+				"label": "Сочи"
+			}
+		]
+  }
+}

@@ -1,0 +1,65 @@
+.App {
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.gap-row-30.fields__row {
+  gap: 0 30px;
+}
+.self-align {
+  align-self: flex-start;
+  gap: 0 30px;
+}
+.field__input {
+  width: 100%;
+}
+.width-147 {
+  max-width: 147px;
+}
+.main {
+	max-height: 100vh;
+	overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  flex: 1;
+	gap: 40px;
+}
+.main__header {
+  margin-bottom: 40px;
+}
+.form__title + .form__text {
+  margin-top: 20px;
+}
+.form__text {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.5);
+}
+.fields__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 40px;
+}
+.fields__row > .field {
+  flex: 1;
+}
+.fields__row .flex-2 {
+  flex: 2;
+}
+.fields-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 40px 0;
+}
+
+.field-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+.hidden {
+	display: none;
+}

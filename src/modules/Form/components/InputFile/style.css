@@ -1,0 +1,47 @@
+.input-file {
+  display: none;
+}
+.input-file {
+  display: flex;
+  background: #fbfbfb;
+  border-radius: 7px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.input-file__empty {
+  display: flex;
+  flex: 1;
+}
+.input-file__text {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(153, 153, 153, 0.7);
+  border: 1px dashed #e4e5e7;
+  border-right: none;
+}
+.input-file__upload {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  color: #5795fd;
+  border: 1px dashed #e4e5e7;
+}
+.input-file-value {
+  display: none;
+}
+.upload-file {
+  background-color: #5795fd;
+  padding: 10px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+.delete-file {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
