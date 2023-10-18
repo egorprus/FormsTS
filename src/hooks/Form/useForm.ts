@@ -37,8 +37,8 @@ export const useForm = () => {
 	};
 
 	const handleChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
-		const {name, value} = e.target;
-		dispatch(updateForm({[name]: !value}))
+		const {name, checked} = e.target;
+		dispatch(updateForm({[name]: checked}))
 	};
 
   return { handleChangeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox };

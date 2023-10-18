@@ -1,10 +1,10 @@
 import { Suspense, lazy } from "react";
-import { useNeedRenderIPForm } from "../../../../hooks/useNeedRenderIPForm";
+import { useNeedRenderOOOForm } from "../../../../hooks/useNeedRenderOOOForm";
 
 const OOOFormContent = lazy(() => import("./OOOFormContent"));
 
 export const OOOForm = () => {
-  const { needRender } = useNeedRenderIPForm();
+  const { needRender } = useNeedRenderOOOForm();
 
   return <Suspense fallback={null}>
     {needRender ? <OOOFormContent /> : null}

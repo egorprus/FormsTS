@@ -1,21 +1,24 @@
+import { useSelector } from "react-redux";
+import { getSexIcon } from "../../../../assets/sexIcons";
 import { FieldNames, SelectOption } from "../../../../models/types";
 import { InputRadioButton } from "./InputRadioButton";
 import "./style.css";
+import { RootState } from "../../../../store";
 
 interface RadioButtonProp {
   options: SelectOption[];
   label?: string;
   require?: boolean;
-  currentValue?: string;
   name: FieldNames;
 }
 export const RadioButton = ({
   options,
   label,
   require,
-  currentValue,
-	name,
+  name,
 }: RadioButtonProp) => {
+  const form = useSelector((state: RootState) => state.form.form);
+
   return (
     <div className="field field-container">
       <div className="field__title">
@@ -26,10 +29,11 @@ export const RadioButton = ({
         {options.map((option, index) => (
           <InputRadioButton
             value={option}
-            active={currentValue === option.value}
+            isActive={form[name] === option.value}
             index={index}
             key={index}
-						name={name}
+            name={name}
+            icon={getSexIcon(option.value)}
           />
         ))}
       </div>

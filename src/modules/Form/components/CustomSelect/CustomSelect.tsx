@@ -1,14 +1,16 @@
-import { SelectOption } from "../../../../models/types";
+import { FieldNames, SelectOption } from "../../../../models/types";
 import "./style.css";
 import Select from "react-select";
 import { useForm } from "../../../../hooks/Form/useForm";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 interface CustomSelectProp {
   label?: string;
   require?: boolean;
   options?: SelectOption[];
   className?: string;
-  name?: string;
+  name: FieldNames;
 }
 export const CustomSelect = ({
   label,
@@ -16,7 +18,8 @@ export const CustomSelect = ({
   options,
   name,
 }: CustomSelectProp) => {
-	const {handleChangeSelect} = useForm();
+  const { handleChangeSelect } = useForm();
+  const form = useSelector((state: RootState) => state.form.form);
 
   return (
     <div className="field field-container">
@@ -29,6 +32,7 @@ export const CustomSelect = ({
           options={options}
           className="custom-select"
           name={name}
+          value={form[name] as SelectOption}
           onChange={handleChangeSelect}
         />
       </div>

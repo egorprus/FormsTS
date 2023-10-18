@@ -1,6 +1,10 @@
 import { ReactElement } from "react";
 import { DefaultUrls } from "./enums";
 
+export enum OwnershipType {
+	ip = 'ip',
+	ooo = 'ooo'
+} 
 export interface PageTemplate {
   url: DefaultUrls;
   title: string;

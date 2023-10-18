@@ -7,12 +7,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 export const RegistrationAddressFormContent = () => {
-	const { countryOptions, regionOptions } = useSelector(
+  const { countryOptions, regionOptions } = useSelector(
     (state: RootState) => state.dictionary.dictionary
   );
   return (
     <form className="form field-container">
-      <CustomSelect {...FIELDS.country} options={countryOptions}  />
+      <CustomSelect {...FIELDS.country} options={countryOptions} />
       <CustomSelect {...FIELDS.region} options={regionOptions} />
       <InputText {...FIELDS.city} />
       <InputText {...FIELDS.street} />

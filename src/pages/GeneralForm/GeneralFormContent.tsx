@@ -12,20 +12,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 export const GeneralFormContent = () => {
-	const { citizenshipOptions, cityOptions, sexOptions } = useSelector(
+  const { citizenshipOptions, cityOptions, sexOptions } = useSelector(
     (state: RootState) => state.dictionary.dictionary
   );
-	
+
   return (
     <form className="form field-container">
       <InputText {...FIELDS.lastName} />
       <InputText {...FIELDS.firstName} />
-      <InputText {...FIELDS.middleName}/>
+      <InputText {...FIELDS.middleName} />
       <CustomSelect {...FIELDS.mainCity} options={cityOptions} />
       <CustomSelect {...FIELDS.citizenship} options={citizenshipOptions} />
       <RadioButton {...FIELDS.sex} options={sexOptions} />
       <InputDate {...FIELDS.dob} />
-      <InputText {...FIELDS.placeOfBirth}/>
+      <InputText {...FIELDS.placeOfBirth} />
     </form>
   );
 };

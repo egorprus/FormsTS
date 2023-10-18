@@ -14,10 +14,10 @@ export const InputText = ({
   label,
   isRequire,
   inputProcessing,
-	name,
+  name,
 }: InputTextProp) => {
-	const form = useSelector((state: RootState) => state.form.form);
-	const {handleChangeInputText} = useForm();
+  const form = useSelector((state: RootState) => state.form.form);
+  const { handleChangeInputText } = useForm();
 
   return (
     <div className="field field-text">
@@ -28,7 +28,7 @@ export const InputText = ({
         </span>
         <div className="field__input-wrapper">
           <input
-						name={name}
+            name={name}
             className="field__input"
             type="text"
             required={isRequire}

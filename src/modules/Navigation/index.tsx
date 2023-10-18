@@ -5,9 +5,9 @@ import { RootState } from "../../store";
 import { pages } from "../../constants";
 
 export const Navigation = () => {
-	const {currentPage} = useSelector((state: RootState) => state.form);
+  const { currentPage } = useSelector((state: RootState) => state.form);
 
-	return (
+  return (
     <div className="navigation-wrapper">
       <menu className="navigation">
         <h2 className="navigation__title">Создание аккаунта</h2>

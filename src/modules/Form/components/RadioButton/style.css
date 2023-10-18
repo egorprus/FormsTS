@@ -5,6 +5,9 @@
   color: #5795fd;
   border-color: #5795fd;
 }
+.field__radio-container.active .field__radio-img path {
+	fill: #5795FD;
+}
 .field__radio-input {
   display: none;
 }

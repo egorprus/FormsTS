@@ -4,6 +4,7 @@ import { RootState } from "../../../../store";
 
 const FormHeader = () => {
   const { currentPage } = useSelector((state: RootState) => state.form);
+
   return (
     <div className="form__header">
       <img src={logo} alt="form logo" />
