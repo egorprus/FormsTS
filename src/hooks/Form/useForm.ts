@@ -8,9 +8,8 @@ import moment from "moment";
 export const useForm = () => {
   const dispatch = useAppDispatch();
 
-  const handleChangeInputText = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = event.target;
+  const changeInputText = useCallback(
+    (value: string, name: string) => {
       dispatch(updateForm({ [name]: value }));
     },
     [dispatch]
@@ -41,5 +40,5 @@ export const useForm = () => {
 		dispatch(updateForm({[name]: checked}))
 	};
 
-  return { handleChangeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox };
+  return { changeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox };
 };

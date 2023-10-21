@@ -5,6 +5,7 @@ import { InputDate } from "../../modules/Form/components/InputDate/InputDate";
 import { FieldNames } from "../../models/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { onlyLetters, onlyNumber } from "../../modules/Form/validation";
 
 export const ResidentialAddressFormContent = () => {
   const { countryOptions, regionOptions } = useSelector(
@@ -41,18 +42,22 @@ const FIELDS = {
   registrationCity: {
     name: FieldNames.registrationCity,
     label: "Город / Населенный пункт",
+		inputProcessing: [onlyLetters],
   },
   registrationStreet: {
     name: FieldNames.registrationStreet,
     label: "Улица",
+		inputProcessing: [onlyLetters],
   },
   registrationHouse: {
     name: FieldNames.registrationHouse,
     label: "Дом",
+		inputProcessing: [onlyNumber],
   },
   registrationApartment: {
     name: FieldNames.registrationApartment,
     label: "Квартира",
+		inputProcessing: [onlyNumber],
   },
   registrationApartmentStatus: {
     name: FieldNames.registrationApartmentStatus,

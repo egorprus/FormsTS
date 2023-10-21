@@ -39,7 +39,7 @@ const FIELDS = {
       min: minLength(3),
       required: required,
     },
-    inputProcessing: onlyLetters,
+    inputProcessing: [onlyLetters],
   },
   firstName: {
     name: FieldNames.firstName,
@@ -49,6 +49,7 @@ const FIELDS = {
       min: minLength(3),
       required: required,
     },
+		inputProcessing: [onlyLetters],
   },
   middleName: {
     name: FieldNames.middleName,
@@ -58,6 +59,7 @@ const FIELDS = {
       min: minLength(3),
       required: required,
     },
+		inputProcessing: [onlyLetters],
   },
   mainCity: {
     name: FieldNames.mainCity,
@@ -94,5 +96,6 @@ const FIELDS = {
       min: minLength(3),
       required: required,
     },
+		inputProcessing: [onlyLetters],
   },
 };

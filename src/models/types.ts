@@ -141,6 +141,11 @@ export interface RegistrationAddressFormFields {
   registrationDate: string;
 }
 
+export type ValidatorsType = ValidateLetter | ValidateNumber;
+
+export type ValidateNumber = (value: string) => string;
+export type ValidateLetter = (value: string) => string;
+
 export interface ResidentialAddressFormFields {
   addressStatus: boolean;
   registrationCountry: SelectOption;
