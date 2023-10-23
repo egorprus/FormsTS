@@ -1,54 +1,52 @@
 import "./style.css";
-import { RootState } from "../../../../store";
-import { useSelector } from "react-redux";
 import { FieldNames, ValidatorsType } from "../../../../models/types";
-import { useForm } from "../../../../hooks/Form/useForm";
 import { ChangeEvent } from "react";
+import { FieldLabel } from "../FieldLabel/FieldLabel";
 
 interface InputTextProp {
-  label?: string;
-  isRequire?: boolean;
+  label: string;
+  require?: boolean;
   name: Partial<FieldNames>;
   inputProcessing?: ValidatorsType[];
+  placeholder?: string;
+  handleChange: (value: string, name: string) => void;
+  currentValue: string | undefined;
 }
 export const InputText = ({
   label,
-  isRequire,
+  require,
   inputProcessing,
   name,
+  placeholder,
+  handleChange,
+  currentValue = '',
 }: InputTextProp) => {
-  const form = useSelector((state: RootState) => state.form.form);
-  const { changeInputText } = useForm();
-
   const handleChangeInputText = (event: ChangeEvent<HTMLInputElement>) => {
     let { value } = event.target;
     if (inputProcessing?.length) {
       value = inputProcessing.reduce(
-        (currentValue, validator) => validator(currentValue),
+        (newValue, validator) => validator(newValue),
         value
       );
     }
-    changeInputText(value, name);
+    handleChange(value, name);
   };
 
   return (
-    <div className="field field-text">
-      <label className="field__label field-container">
-        <span className="field__label-text">
-          {label}
-          {isRequire && "*"}
-        </span>
-        <div className="field__input-wrapper">
-          <input
-            name={name}
-            className="field__input"
-            type="text"
-            required={isRequire}
-            onChange={handleChangeInputText}
-            value={(form[name] as string) || ""}
-          />
-        </div>
-      </label>
+    <div className="field field-container field-text">
+      <FieldLabel name={name} label={label} require={require} />
+      <div className="field__input-wrapper">
+        <input
+          id={name}
+          name={name}
+          className="field__input"
+          type="text"
+          required={require}
+          placeholder={placeholder}
+          onChange={handleChangeInputText}
+          value={currentValue}
+        />
+      </div>
     </div>
   );
 };

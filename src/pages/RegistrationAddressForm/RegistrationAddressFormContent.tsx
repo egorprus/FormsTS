@@ -5,61 +5,72 @@ import { InputDate } from "../../modules/Form/components/InputDate/InputDate";
 import { FieldNames } from "../../models/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { onlyLetters } from "../../modules/Form/validation";
+import { useForm } from "../../hooks/Form/useForm";
 
 export const RegistrationAddressFormContent = () => {
   const { countryOptions, regionOptions } = useSelector(
     (state: RootState) => state.dictionary.dictionary
   );
+  const form = useSelector((state: RootState) => state.form.form);
+  const {
+    handleChangeInputText,
+    handleChangeDate,
+    handleChangeSelect,
+    handleChangeCheckbox,
+  } = useForm();
+
   return (
     <form className="form field-container">
-      <CustomSelect {...FIELDS.country} options={countryOptions} />
-      <CustomSelect {...FIELDS.region} options={regionOptions} />
-      <InputText {...FIELDS.city} />
-      <InputText {...FIELDS.street} />
-      <InputText {...FIELDS.house} />
-      <InputText {...FIELDS.apartment} />
-      <Checkbox {...FIELDS.apartmentStatus} />
-      <InputDate {...FIELDS.registrationDate} />
+      <CustomSelect
+        currentValue={form[FieldNames.country]}
+        name={FieldNames.country}
+        label="Страна"
+        options={countryOptions}
+        handleChange={handleChangeSelect}
+      />
+      <CustomSelect
+        currentValue={form[FieldNames.region]}
+        name={FieldNames.region}
+        label="Регион"
+        options={regionOptions}
+        handleChange={handleChangeSelect}
+      />
+      <InputText
+        currentValue={form[FieldNames.city]}
+        name={FieldNames.city}
+        label="Город / Населенный пункт"
+        handleChange={handleChangeInputText}
+      />
+      <InputText
+        currentValue={form[FieldNames.street]}
+        name={FieldNames.street}
+        label="Улица"
+        handleChange={handleChangeInputText}
+      />
+      <InputText
+        currentValue={form[FieldNames.house]}
+        name={FieldNames.house}
+        label="Дом"
+        handleChange={handleChangeInputText}
+      />
+      <InputText
+        currentValue={form[FieldNames.apartment]}
+        name={FieldNames.apartment}
+        label="Квартира"
+        handleChange={handleChangeInputText}
+      />
+      <Checkbox
+        currentValue={form[FieldNames.apartmentStatus]}
+        name={FieldNames.apartmentStatus}
+        label="нет квартиры"
+        handleChange={handleChangeCheckbox}
+      />
+      <InputDate
+        currentValue={form[FieldNames.registrationDate]}
+        name={FieldNames.registrationDate}
+        label="Дата прописки"
+        handleChange={handleChangeDate}
+      />
     </form>
   );
-};
-
-const FIELDS = {
-  country: {
-    name: FieldNames.country,
-    label: "Страна",
-  },
-  region: {
-    name: FieldNames.region,
-    label: "Регион",
-  },
-  city: {
-    name: FieldNames.city,
-    label: "Город / Населенный пункт",
-		inputProcessing: [onlyLetters],
-  },
-  street: {
-    name: FieldNames.street,
-    label: "Улица",
-		inputProcessing: [onlyLetters],
-  },
-  house: {
-    name: FieldNames.house,
-    label: "Дом",
-		inputProcessing: [onlyLetters],
-  },
-  apartment: {
-    name: FieldNames.apartment,
-    label: "Квартира",
-		inputProcessing: [onlyLetters],
-  },
-  apartmentStatus: {
-    name: FieldNames.apartmentStatus,
-    label: "нет квартиры",
-  },
-  registrationDate: {
-    name: FieldNames.registrationDate,
-    label: "Дата прописки",
-  },
 };

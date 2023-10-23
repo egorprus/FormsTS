@@ -2,100 +2,84 @@ import { InputText } from "../../modules/Form/components/InputText/InputText";
 import { CustomSelect } from "../../modules/Form/components/CustomSelect/CustomSelect";
 import { RadioButton } from "../../modules/Form/components/RadioButton/RadioButton";
 import { InputDate } from "../../modules/Form/components/InputDate/InputDate";
-import {
-  minLength,
-  onlyLetters,
-  required,
-} from "../../modules/Form/validation";
+import { onlyLetters } from "../../modules/Form/validation";
 import { FieldNames } from "../../models/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { useForm } from "../../hooks/Form/useForm";
 
 export const GeneralFormContent = () => {
   const { citizenshipOptions, cityOptions, sexOptions } = useSelector(
     (state: RootState) => state.dictionary.dictionary
   );
+  const form = useSelector((state: RootState) => state.form.form);
+  const {
+    handleChangeInputText,
+    handleChangeSelect,
+    handleChangeRadioButton,
+    handleChangeDate,
+  } = useForm();
 
   return (
     <form className="form field-container">
-      <InputText {...FIELDS.lastName} />
-      <InputText {...FIELDS.firstName} />
-      <InputText {...FIELDS.middleName} />
-      <CustomSelect {...FIELDS.mainCity} options={cityOptions} />
-      <CustomSelect {...FIELDS.citizenship} options={citizenshipOptions} />
-      <RadioButton {...FIELDS.sex} options={sexOptions} />
-      <InputDate {...FIELDS.dob} />
-      <InputText {...FIELDS.placeOfBirth} />
+      <InputText
+        currentValue={form[FieldNames.lastName]}
+        name={FieldNames.lastName}
+        label="Фамилия"
+        placeholder="Васильев"
+        inputProcessing={[onlyLetters]}
+        handleChange={handleChangeInputText}
+      />
+      <InputText
+        currentValue={form[FieldNames.firstName]}
+        name={FieldNames.firstName}
+        label="Имя"
+        placeholder="Иван"
+        inputProcessing={[onlyLetters]}
+        handleChange={handleChangeInputText}
+      />
+      <InputText
+        currentValue={form[FieldNames.middleName]}
+        name={FieldNames.middleName}
+        label="Отчество"
+        placeholder="Сергеевич"
+        inputProcessing={[onlyLetters]}
+        handleChange={handleChangeInputText}
+      />
+      <CustomSelect
+        currentValue={form[FieldNames.mainCity]}
+        name={FieldNames.mainCity}
+        label="Основной город"
+        options={cityOptions}
+        handleChange={handleChangeSelect}
+      />
+      <CustomSelect
+        currentValue={form[FieldNames.citizenship]}
+        name={FieldNames.citizenship}
+        label="Гражданство"
+        options={citizenshipOptions}
+        handleChange={handleChangeSelect}
+      />
+      <RadioButton
+        currentValue={form[FieldNames.sex]?.value}
+        name={FieldNames.sex}
+        label="Пол"
+        options={sexOptions}
+        handleChange={handleChangeRadioButton}
+      />
+      <InputDate
+        currentValue={form[FieldNames.dob]}
+        name={FieldNames.dob}
+        label="Дата рождения"
+        handleChange={handleChangeDate}
+      />
+      <InputText
+        currentValue={form[FieldNames.placeOfBirth]}
+        name={FieldNames.placeOfBirth}
+        label="Место рождения (как указано в паспорте)"
+        inputProcessing={[onlyLetters]}
+        handleChange={handleChangeInputText}
+      />
     </form>
   );
-};
-
-const FIELDS = {
-  lastName: {
-    name: FieldNames.lastName,
-    label: "Фамилия",
-    placeholder: "Васильев",
-    validate: {
-      min: minLength(3),
-      required: required,
-    },
-    inputProcessing: [onlyLetters],
-  },
-  firstName: {
-    name: FieldNames.firstName,
-    label: "Имя",
-    placeholder: "Иван",
-    validate: {
-      min: minLength(3),
-      required: required,
-    },
-		inputProcessing: [onlyLetters],
-  },
-  middleName: {
-    name: FieldNames.middleName,
-    label: "Отчество",
-    placeholder: "Сергеевич",
-    validate: {
-      min: minLength(3),
-      required: required,
-    },
-		inputProcessing: [onlyLetters],
-  },
-  mainCity: {
-    name: FieldNames.mainCity,
-    label: "Основной город",
-    validate: {
-      required: required,
-    },
-  },
-  citizenship: {
-    name: FieldNames.citizenship,
-    label: "Гражданство",
-    validate: {
-      required: required,
-    },
-  },
-  sex: {
-    name: FieldNames.sex,
-    label: "Пол",
-    validate: {
-      required: required,
-    },
-  },
-  dob: {
-    name: FieldNames.dob,
-    label: "Дата рождения",
-    validate: {
-      required: required,
-    },
-  },
-  placeOfBirth: {
-    name: FieldNames.placeOfBirth,
-    label: "Место рождения (как указано в паспорте)",
-    validate: {
-      min: minLength(3),
-      required: required,
-    },
-		inputProcessing: [onlyLetters],
-  },
 };

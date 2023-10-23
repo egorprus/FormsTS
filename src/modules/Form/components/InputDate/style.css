@@ -1,3 +1,7 @@
+.field-date {
+	display: flex;
+	flex-direction: column;
+}
 .field-date .field__input-wrapper {
 	align-self: flex-start;
 }

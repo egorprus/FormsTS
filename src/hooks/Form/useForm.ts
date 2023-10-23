@@ -5,10 +5,17 @@ import { FieldNames, SelectOption } from "../../models/types";
 import { ActionMeta, SingleValue } from "react-select";
 import moment from "moment";
 
-export const useForm = () => {
+interface THook {
+	handleChangeInputText: (value: string, name: string) => void,
+	handleChangeSelect: (newValue: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void,
+	handleChangeRadioButton: (e: ChangeEvent<HTMLInputElement>) => void,
+	handleChangeDate: (date: Date | null, fieldName: string) => void,
+	handleChangeCheckbox: (e: ChangeEvent<HTMLInputElement>) => void,
+}
+export const useForm = (): THook => {
   const dispatch = useAppDispatch();
 
-  const changeInputText = useCallback(
+  const handleChangeInputText = useCallback(
     (value: string, name: string) => {
       dispatch(updateForm({ [name]: value }));
     },
@@ -17,10 +24,10 @@ export const useForm = () => {
 
   const handleChangeSelect = useCallback(
     (
-      nweValue: SingleValue<SelectOption>,
+      newValue: SingleValue<SelectOption>,
       actionMeta: ActionMeta<SelectOption>
     ) => {
-      dispatch(updateForm({ [actionMeta.name as FieldNames]: nweValue }));
+      dispatch(updateForm({ [actionMeta.name as FieldNames]: newValue }));
     },
     [dispatch]
   );
@@ -40,5 +47,5 @@ export const useForm = () => {
 		dispatch(updateForm({[name]: checked}))
 	};
 
-  return { changeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox };
+  return { handleChangeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox };
 };

@@ -29,3 +29,6 @@
 	line-height: 18px;
 	color: rgba(199, 52, 52, 0.7);
 }
+.custom-select .field__label {
+	cursor: auto;
+}

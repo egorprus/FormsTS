@@ -1,26 +1,27 @@
 import { useSelector } from "react-redux";
 import { FieldNames } from "../../models/types";
 import { CustomSelect } from "../../modules/Form/components/CustomSelect/CustomSelect";
-import { IPForm } from "../../modules/Form/components/IPForm/IPForm";
-import { OOOForm } from "../../modules/Form/components/OOOForm/OOOForm";
 import { RootState } from "../../store";
+import { useForm } from "../../hooks/Form/useForm";
+import { getOwnershipTypeForm } from "./utils/getOwnershipTypeForm";
 
 export const OwnershipFormContent = () => {
   const { ownershipTypeOptions } = useSelector(
     (state: RootState) => state.dictionary.dictionary
   );
+  const form = useSelector((state: RootState) => state.form.form);
+  const { handleChangeSelect } = useForm();
+
   return (
     <form className="form field-container">
-      <CustomSelect {...FIELDS.ownershipType} options={ownershipTypeOptions} />
-      <IPForm />
-      <OOOForm />
+      <CustomSelect
+        currentValue={form[FieldNames.ownershipType]}
+        name={FieldNames.ownershipType}
+        label="Вид деятельности"
+        options={ownershipTypeOptions}
+        handleChange={handleChangeSelect}
+      />
+      {getOwnershipTypeForm(form[FieldNames.ownershipType]?.value)}
     </form>
   );
-};
-
-const FIELDS = {
-  ownershipType: {
-    name: FieldNames.ownershipType,
-    label: "Вид деятельности",
-  },
 };

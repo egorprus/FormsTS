@@ -4,40 +4,34 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getDateRange } from "./utils";
 import { FieldNames } from "../../../../models/types";
-import { useForm } from "../../../../hooks/Form/useForm";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../store";
+import { FieldLabel } from "../FieldLabel/FieldLabel";
 
 interface InputDateProp {
-  label?: string;
+  label: string;
   require?: boolean;
   name: FieldNames;
+	handleChange: (date: Date | null, fieldName: string) => void;
+	currentValue: string | undefined;
 }
-export const InputDate = ({ label, require, name }: InputDateProp) => {
-  const form = useSelector((state: RootState) => state.form.form);
+export const InputDate = ({ label, require, name, handleChange, currentValue }: InputDateProp) => {
   const { minDate, maxDate } = getDateRange();
-  const { handleChangeDate } = useForm();
 
   return (
-    <div className="field field-date">
-      <label className="field__label field-container">
-        <span className="field__label-text">
-          {label}
-          {require && "*"}
-        </span>
-      </label>
+    <div className="field field-container field-date">
+      <FieldLabel name={name} label={label} require={require} />
       <div className="field__input-wrapper">
         <ReactDatePicker
           className="input-date"
           placeholderText="Select date"
           onChange={(date) => {
-            handleChangeDate(date, name);
+            handleChange(date, name);
           }}
           maxDate={maxDate}
           minDate={minDate}
           selected={null}
           name={name}
-          value={form[name] as string}
+          value={currentValue}
+					id={name}
         />
         <img className="input-data-icon" src={calendarIcon} alt="calendar" />
       </div>

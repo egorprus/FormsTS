@@ -1,6 +1,6 @@
 import { FieldNames, SelectOption } from "../../../../models/types";
 import "./style.css";
-import { useForm } from "../../../../hooks/Form/useForm";
+import { ChangeEvent } from "react";
 
 interface InputRadioButtonProp {
   isActive: boolean;
@@ -8,6 +8,7 @@ interface InputRadioButtonProp {
   index: number;
   name: FieldNames;
   icon: JSX.Element | undefined;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 export const InputRadioButton = ({
   isActive,
@@ -15,9 +16,8 @@ export const InputRadioButton = ({
   index,
   name,
   icon,
+  handleChange,
 }: InputRadioButtonProp) => {
-  const { handleChangeRadioButton } = useForm();
-
   return (
     <div className={`field__radio-container${isActive ? " active" : ""}`}>
       <input
@@ -26,7 +26,7 @@ export const InputRadioButton = ({
         name={name}
         value={value.value}
         id={`radio-button${index + 1}`}
-        onChange={handleChangeRadioButton}
+        onChange={handleChange}
       />
       <label
         className="field__radio-label"
