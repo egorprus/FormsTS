@@ -1,5 +1,6 @@
 import { getSexIcon } from "../../../../assets/sexIcons";
-import { FieldNames, SelectOption } from "../../../../models/types";
+import { SelectOption } from "../../../../models/types";
+import { FieldNames } from "../../models";
 import { InputRadioButton } from "./InputRadioButton";
 import "./style.css";
 import { ChangeEvent } from "react";

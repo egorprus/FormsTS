@@ -1,9 +1,10 @@
 import { ChangeEvent, useCallback } from "react";
-import { useAppDispatch } from "../../store";
-import { updateForm } from "../../store/formSlice";
-import { FieldNames, SelectOption } from "../../models/types";
+import { useAppDispatch } from "../store";
+import { updateForm } from "../store/formSlice";
+import { SelectOption } from "../models/types";
 import { ActionMeta, SingleValue } from "react-select";
 import moment from "moment";
+import { FieldNames } from "../modules/Form/models";
 
 interface THook {
 	handleChangeInputText: (value: string, name: string) => void,

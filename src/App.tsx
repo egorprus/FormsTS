@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigation } from "./modules/Navigation";
-import { mainRoutes } from "./constants";
 import { FormContainer } from "./modules/Form";
+import { mainRoutes } from "./constants/mainRoutes";
 
 function App() {
   return (

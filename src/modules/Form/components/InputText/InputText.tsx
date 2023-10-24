@@ -1,7 +1,8 @@
 import "./style.css";
-import { FieldNames, ValidatorsType } from "../../../../models/types";
+import { ValidatorsType } from "../../../../models/types";
 import { ChangeEvent } from "react";
 import { FieldLabel } from "../FieldLabel/FieldLabel";
+import { FieldNames } from "../../models";
 
 interface InputTextProp {
   label: string;

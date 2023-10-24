@@ -1,6 +1,6 @@
-import { OwnershipType } from "../../../models/types";
 import { IPForm } from "../components/IPForm";
 import { OOOForm } from "../components/OOOForm";
+import { OwnershipType } from "../models";
 
 export const getOwnershipTypeForm = (ownershipType: string = '') => {
   switch (ownershipType) {

@@ -3,8 +3,8 @@ import calendarIcon from "../../../../assets/calendar.svg";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getDateRange } from "./utils";
-import { FieldNames } from "../../../../models/types";
 import { FieldLabel } from "../FieldLabel/FieldLabel";
+import { FieldNames } from "../../models";
 
 interface InputDateProp {
   label: string;

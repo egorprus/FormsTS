@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { mainRoutes } from "../../../../constants";
+import { Location } from "react-router-dom";
+import { DefaultUrls } from "../../../../models/enums";
+import { ButtonLink } from "../ButtonLink/ButtonLink";
 
-export const FormFooter = () => {
-  const location = useLocation();
-  const [nextForm, setNextForm] = useState({});
-  const [prevForm, setPrevForm] = useState({});
+interface Prop {
+	location: Location<any>;
+}
+const urlList = Object.values(DefaultUrls);
+
+export const FormFooter = ({location}: Prop) => {
+  const [nextForm, setNextForm] = useState<DefaultUrls>(urlList[1]);
+  const [prevForm, setPrevForm] = useState<DefaultUrls>(urlList[0]);
 
   useEffect(() => {
-    const currentIndex = mainRoutes.findIndex(
-      (page) => page.url === location.pathname
-    );
-    currentIndex > 0 && setPrevForm(mainRoutes[currentIndex - 1].url ?? 0);
-    currentIndex < mainRoutes.length - 1 &&
-      setNextForm(mainRoutes[currentIndex + 1].url);
+    const currentIndex = urlList.findIndex((url) => url === location.pathname);
+    currentIndex > 0 && setPrevForm(urlList[currentIndex - 1]);
+    currentIndex < urlList.length - 1 &&
+      setNextForm(urlList[currentIndex + 1]);
   }, [location.pathname]);
 
   return (
     <div className="form__footer">
-      <Link to={prevForm}>Назад</Link>
-      <Link to={nextForm}>Далее</Link>
+			<ButtonLink disable={prevForm === location.pathname} url={prevForm} text="Назад" />
+			<ButtonLink disable={nextForm === location.pathname} url={nextForm} text="Далее" />
     </div>
   );
 };

@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { SelectOption } from "../models/types";
 
 export interface DictionaryState {
-  cityOptions: SelectOption[] | [];
-  citizenshipOptions: SelectOption[] | [];
-  ownershipTypeOptions: SelectOption[] | [];
-  countryOptions: SelectOption[] | [];
-  sexOptions: SelectOption[] | [];
-  regionOptions: SelectOption[] | [];
+  cityOptions: SelectOption[];
+  citizenshipOptions: SelectOption[];
+  ownershipTypeOptions: SelectOption[];
+  countryOptions: SelectOption[];
+  sexOptions: SelectOption[];
+  regionOptions: SelectOption[];
 }
 
 interface InitState {

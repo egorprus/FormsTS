@@ -1,7 +1,7 @@
-import { FieldNames } from "../../../../models/types";
 import "./style.css";
 import { FieldLabel } from "../FieldLabel/FieldLabel";
 import { ChangeEvent } from "react";
+import { FieldNames } from "../../models";
 
 interface CheckboxProp {
   label: string;

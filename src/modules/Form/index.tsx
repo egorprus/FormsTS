@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../store";
 import { changePage } from "../../store/formSlice";
-import { pages } from "../../constants";
+import { pages } from "../Navigation/constants";
 
 interface FormContainerProp {
   children: JSX.Element;
@@ -23,10 +23,10 @@ export const FormContainer = ({ children }: FormContainerProp) => {
   }, [location.pathname]);
 
   return (
-    <main className="main" ref={mainBlock}>
+    <section className="main" ref={mainBlock}>
       <FormHeader />
       {children}
-      <FormFooter />
-    </main>
+      <FormFooter location={location} />
+    </section>
   );
 };

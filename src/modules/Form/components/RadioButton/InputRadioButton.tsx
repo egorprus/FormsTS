@@ -1,4 +1,5 @@
-import { FieldNames, SelectOption } from "../../../../models/types";
+import { SelectOption } from "../../../../models/types";
+import { FieldNames } from "../../models";
 import "./style.css";
 import { ChangeEvent } from "react";
 

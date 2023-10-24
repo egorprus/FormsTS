@@ -2,7 +2,7 @@ import "./styles.css";
 import { NavigationItem } from "./components/NavigationItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { pages } from "../../constants";
+import { pages } from "./constants";
 
 export const Navigation = () => {
   const { currentPage } = useSelector((state: RootState) => state.form);

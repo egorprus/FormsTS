@@ -2,10 +2,10 @@ import { InputText } from "../../../modules/Form/components/InputText/InputText"
 import { InputFile } from "../../../modules/Form/components/InputFile/InputFile";
 import { InputDate } from "../../../modules/Form/components/InputDate/InputDate";
 import { Checkbox } from "../../../modules/Form/components/Checkbox/Checkbox";
-import { FieldNames } from "../../../models/types";
-import { useForm } from "../../../hooks/Form/useForm";
+import { useForm } from "../../../hooks/useForm";
 import { RootState } from "../../../store";
 import { useSelector } from "react-redux";
+import { FieldNames } from "../../../modules/Form/models";
 
 export const IPForm = () => {
 	const form = useSelector((state: RootState) => state.form.form);
