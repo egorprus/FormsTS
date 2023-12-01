@@ -1,32 +1,29 @@
 import { getSexIcon } from "../../../../assets/sexIcons";
 import { SelectOption } from "../../../../models/types";
 import { FieldNames } from "../../models";
+import { FieldLabel } from "../FieldLabel/FieldLabel";
 import { InputRadioButton } from "./InputRadioButton";
 import "./style.css";
 import { ChangeEvent } from "react";
 
 interface RadioButtonProp {
   options: SelectOption[];
-  label?: string;
-  require?: boolean;
+  label: string;
   name: FieldNames;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   currentValue: string | undefined;
 }
-export const RadioButton = ({
+const RadioButton = ({
   options,
   label,
-  require,
   name,
   handleChange,
   currentValue,
 }: RadioButtonProp) => {
+	console.log(currentValue)
   return (
     <div className="field field-container">
-      <div className="field__title">
-        {label}
-        {require && "*"}
-      </div>
+      <FieldLabel name={name} label={label} require={true} />
       <div className="field__radio-wrapper field-container">
         {options.map((option, index) => (
           <InputRadioButton
@@ -43,3 +40,5 @@ export const RadioButton = ({
     </div>
   );
 };
+
+export default RadioButton;

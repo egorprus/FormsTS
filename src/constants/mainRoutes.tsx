@@ -5,7 +5,7 @@ import { OwnershipForm } from "../pages/OwnershipForm/OwnershipForm";
 import { RegistrationAddressForm } from "../pages/RegistrationAddressForm/RegistrationAddressForm";
 import { ResidentialAddressForm } from "../pages/ResidentialAddressForm/ResidentialAddressForm";
 
-export const mainRoutes: MainRoutes[] = [
+export const mainRoutes: readonly MainRoutes[] = [
 	{
 		id: 1,
 		url: DefaultUrls.general,
@@ -27,3 +27,5 @@ export const mainRoutes: MainRoutes[] = [
 		component: <ResidentialAddressForm />,
 	},
 ]
+
+export const API_URL = 'http://localhost:3000/disctionary';

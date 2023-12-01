@@ -1,11 +1,11 @@
-import { FieldNames, SelectOption } from "../../../../models/types";
+import { SelectOption } from "../../../../models/types";
 import "./style.css";
 import Select, { ActionMeta, SingleValue } from "react-select";
 import { FieldLabel } from "../FieldLabel/FieldLabel";
+import { FieldNames } from "../../models";
 
 interface CustomSelectProp {
   label: string;
-  require?: boolean;
   options?: SelectOption[];
   className?: string;
   name: FieldNames;
@@ -15,9 +15,8 @@ interface CustomSelectProp {
   ) => void;
   currentValue: SelectOption | undefined;
 }
-export const CustomSelect = ({
+const CustomSelect = ({
   label,
-  require,
   options,
   name,
   handleChange,
@@ -25,7 +24,7 @@ export const CustomSelect = ({
 }: CustomSelectProp) => {
   return (
     <div className="field field-container custom-select">
-      <FieldLabel name={name} label={label} require={require} />
+      <FieldLabel name={name} label={label} require={true} />
       <div className="field__input-wrapper">
         <Select
           options={options}
@@ -38,3 +37,5 @@ export const CustomSelect = ({
     </div>
   );
 };
+
+export default CustomSelect;

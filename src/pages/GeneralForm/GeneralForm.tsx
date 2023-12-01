@@ -1,25 +1,26 @@
-import { InputText } from "../../modules/Form/components/InputText/InputText";
-import { CustomSelect } from "../../modules/Form/components/CustomSelect/CustomSelect";
-import { RadioButton } from "../../modules/Form/components/RadioButton/RadioButton";
-import { InputDate } from "../../modules/Form/components/InputDate/InputDate";
-import { onlyLetters } from "../../modules/Form/validation";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { useForm } from "../../hooks/useForm";
 import { FieldNames } from "../../modules/Form/models";
+import { dictionarySelector, formSelector } from "../../store/selectors";
+import { useForm } from "../../modules/Form/hooks/useForm";
+import {
+  CustomSelect,
+  InputDate,
+  InputText,
+  RadioButton,
+} from "../../modules/Form/components/index";
+import { onlyLetters } from "../../modules/Form/inputProcessing";
 
 export const GeneralForm = () => {
-  const { citizenshipOptions, cityOptions, sexOptions } = useSelector(
-    (state: RootState) => state.dictionary.dictionary
-  );
-  const form = useSelector((state: RootState) => state.form.form);
+  const { citizenshipOptions, cityOptions, sexOptions } =
+    useSelector(dictionarySelector);
+  const form = useSelector(formSelector);
   const {
     handleChangeInputText,
     handleChangeSelect,
     handleChangeRadioButton,
     handleChangeDate,
   } = useForm();
-
+  console.log(form[FieldNames.sex]);
   return (
     <form className="form field-container">
       <InputText
@@ -61,7 +62,7 @@ export const GeneralForm = () => {
         handleChange={handleChangeSelect}
       />
       <RadioButton
-        currentValue={form[FieldNames.sex]?.value}
+        currentValue={form[FieldNames.sex]}
         name={FieldNames.sex}
         label="Пол"
         options={sexOptions}

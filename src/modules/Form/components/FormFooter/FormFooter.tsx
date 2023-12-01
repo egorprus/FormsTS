@@ -1,28 +1,42 @@
 import { useEffect, useState } from "react";
-import { Location } from "react-router-dom";
 import { DefaultUrls } from "../../../../models/enums";
-import { ButtonLink } from "../ButtonLink/ButtonLink";
+import { ButtonLink } from "../index";
+import { validateForm } from "../../validation";
 
 interface Prop {
-	location: Location<any>;
+  pathname: string;
 }
 const urlList = Object.values(DefaultUrls);
 
-export const FormFooter = ({location}: Prop) => {
+export const FormFooter = ({ pathname }: Prop) => {
   const [nextForm, setNextForm] = useState<DefaultUrls>(urlList[1]);
   const [prevForm, setPrevForm] = useState<DefaultUrls>(urlList[0]);
+  const [isEnd, setIsEnd] = useState<boolean>(false);
 
   useEffect(() => {
-    const currentIndex = urlList.findIndex((url) => url === location.pathname);
+    const currentIndex = urlList.findIndex((url) => url === pathname);
     currentIndex > 0 && setPrevForm(urlList[currentIndex - 1]);
-    currentIndex < urlList.length - 1 &&
-      setNextForm(urlList[currentIndex + 1]);
-  }, [location.pathname]);
+    currentIndex < urlList.length - 1 && setNextForm(urlList[currentIndex + 1]);
+    if (pathname === urlList[urlList.length - 1]) {
+      setIsEnd(true);
+    } else {
+      setIsEnd(false);
+    }
+  }, [pathname]);
 
   return (
     <div className="form__footer">
-			<ButtonLink disable={prevForm === location.pathname} url={prevForm} text="Назад" />
-			<ButtonLink disable={nextForm === location.pathname} url={nextForm} text="Далее" />
+      <ButtonLink
+        disable={prevForm === pathname}
+        url={prevForm}
+        text="Назад"
+      />
+      <ButtonLink
+        disable={nextForm === pathname}
+        url={nextForm}
+        text={`${isEnd ? "Сохранить" : "Далее"}`}
+				handleClick={() => validateForm(pathname)}
+      />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { DefaultUrls } from "./enums";
+import { FieldNames } from "../modules/Form/models";
 export interface PageTemplate {
   url: DefaultUrls;
   title: string;
@@ -59,17 +60,17 @@ export type FormValues =
   & RegistrationAddressFormFields
 	& ResidentialAddressFormFields;
 
-export interface GeneralFormFields {
+export type GeneralFormFields = {
   lastName: string;
   firstName: string;
   middleName: string;
   mainCity: SelectOption;
   citizenship: SelectOption;
-  sex: SelectOption;
+  sex: string;
   dob: string;
   placeOfBirth: string;
 }
-export interface OwnershipFormFields {
+export type OwnershipFormFields = {
   ownershipType: SelectOption;
   inn: string;
   innScan: string;
@@ -85,7 +86,7 @@ export interface OwnershipFormFields {
   ogrnScan: string;
 }
 
-export interface RegistrationAddressFormFields {
+export type RegistrationAddressFormFields = {
   country: SelectOption;
   region: SelectOption;
   city: string;
@@ -96,12 +97,7 @@ export interface RegistrationAddressFormFields {
   registrationDate: string;
 }
 
-export type ValidatorsType = ValidateLetter | ValidateNumber;
-
-export type ValidateNumber = (value: string) => string;
-export type ValidateLetter = (value: string) => string;
-
-export interface ResidentialAddressFormFields {
+export type ResidentialAddressFormFields = {
   addressStatus: boolean;
   registrationCountry: SelectOption;
   registrationRegion: SelectOption;
@@ -112,3 +108,12 @@ export interface ResidentialAddressFormFields {
   registrationApartmentStatus: boolean;
   resAddressRegistrationDate: string;
 }
+
+export type ValidatorsType = ValidateLetter | ValidateNumber;
+
+export type ValidateNumber = (value: string) => string;
+export type ValidateLetter = (value: string) => string;
+
+export type ValidateForm = () => boolean;
+
+export type errorType = Partial<Record<FieldNames, string>>;

@@ -1,12 +1,11 @@
 .input-file {
-  display: none;
-}
-.input-file {
   display: flex;
   background: #fbfbfb;
   border-radius: 7px;
   overflow: hidden;
   cursor: pointer;
+	max-width: 300px;
+	min-width: 300px;
 }
 .input-file__empty {
   display: flex;

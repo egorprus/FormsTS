@@ -5,17 +5,16 @@ import { FieldNames } from "../../models";
 
 interface CheckboxProp {
   label: string;
-  require?: boolean;
   name: FieldNames;
 	handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	currentValue: boolean | undefined;
 }
 
-export const Checkbox = ({ label, require, name, handleChange, currentValue }: CheckboxProp) => {
+const Checkbox = ({ label, name, handleChange, currentValue }: CheckboxProp) => {
 
   return (
     <div className="field checkbox">
-			<FieldLabel name={name} label={label} require={require} />
+			<FieldLabel name={name} label={label} />
       <input
 				id={name}
         className="checkbox-input"
@@ -27,3 +26,5 @@ export const Checkbox = ({ label, require, name, handleChange, currentValue }: C
     </div>
   );
 };
+
+export default Checkbox;

@@ -11,7 +11,7 @@ export interface DictionaryState {
 }
 
 interface InitState {
-	dictionary: DictionaryState
+  dictionary: DictionaryState;
 }
 const initialState: InitState = {
   dictionary: {
@@ -29,7 +29,6 @@ const dictionarySlice = createSlice({
   initialState,
   reducers: {
     updateDictionary: (state, action) => {
-      console.log(action.payload);
       state.dictionary = action.payload;
     },
   },

@@ -1,17 +1,13 @@
-import { CustomSelect } from "../../modules/Form/components/CustomSelect/CustomSelect";
-import { InputText } from "../../modules/Form/components/InputText/InputText";
-import { Checkbox } from "../../modules/Form/components/Checkbox/Checkbox";
-import { InputDate } from "../../modules/Form/components/InputDate/InputDate";
+import { Checkbox, InputDate, InputText, CustomSelect } from "../../modules/Form/components/index";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { useForm } from "../../hooks/useForm";
 import { FieldNames } from "../../modules/Form/models";
+import { dictionarySelector, formSelector } from "../../store/selectors";
+import { useForm } from "../../modules/Form/hooks/useForm";
+import { onlyLetters, onlyNumber } from "../../modules/Form/inputProcessing";
 
 export const RegistrationAddressForm = () => {
-  const { countryOptions, regionOptions } = useSelector(
-    (state: RootState) => state.dictionary.dictionary
-  );
-  const form = useSelector((state: RootState) => state.form.form);
+  const { countryOptions, regionOptions } = useSelector(dictionarySelector);
+  const form = useSelector(formSelector);
   const {
     handleChangeInputText,
     handleChangeDate,
@@ -40,24 +36,28 @@ export const RegistrationAddressForm = () => {
         name={FieldNames.city}
         label="Город / Населенный пункт"
         handleChange={handleChangeInputText}
+				inputProcessing={[onlyLetters]}
       />
       <InputText
         currentValue={form[FieldNames.street]}
         name={FieldNames.street}
         label="Улица"
         handleChange={handleChangeInputText}
+				inputProcessing={[onlyLetters]}
       />
       <InputText
         currentValue={form[FieldNames.house]}
         name={FieldNames.house}
         label="Дом"
         handleChange={handleChangeInputText}
+				inputProcessing={[onlyNumber]}
       />
       <InputText
         currentValue={form[FieldNames.apartment]}
         name={FieldNames.apartment}
         label="Квартира"
         handleChange={handleChangeInputText}
+				inputProcessing={[onlyNumber]}
       />
       <Checkbox
         currentValue={form[FieldNames.apartmentStatus]}

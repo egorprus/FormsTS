@@ -8,17 +8,16 @@ import { FieldNames } from "../../models";
 
 interface InputDateProp {
   label: string;
-  require?: boolean;
   name: FieldNames;
 	handleChange: (date: Date | null, fieldName: string) => void;
 	currentValue: string | undefined;
 }
-export const InputDate = ({ label, require, name, handleChange, currentValue }: InputDateProp) => {
+const InputDate = ({ label, name, handleChange, currentValue }: InputDateProp) => {
   const { minDate, maxDate } = getDateRange();
 
   return (
     <div className="field field-container field-date">
-      <FieldLabel name={name} label={label} require={require} />
+      <FieldLabel name={name} label={label} require={true} />
       <div className="field__input-wrapper">
         <ReactDatePicker
           className="input-date"
@@ -38,3 +37,5 @@ export const InputDate = ({ label, require, name, handleChange, currentValue }: 
     </div>
   );
 };
+
+export default InputDate;

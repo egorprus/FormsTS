@@ -1,45 +1,63 @@
-import { InputText } from "../../../modules/Form/components/InputText/InputText";
-import { InputFile } from "../../../modules/Form/components/InputFile/InputFile";
-import { InputDate } from "../../../modules/Form/components/InputDate/InputDate";
-import { Checkbox } from "../../../modules/Form/components/Checkbox/Checkbox";
-import { useForm } from "../../../hooks/useForm";
-import { RootState } from "../../../store";
+import {
+  Checkbox,
+  InputDate,
+  InputText,
+  InputFile,
+} from "../../../modules/Form/components/index";
 import { useSelector } from "react-redux";
 import { FieldNames } from "../../../modules/Form/models";
+import { formSelector } from "../../../store/selectors";
+import { useForm } from "../../../modules/Form/hooks/useForm";
+import { onlyNumber } from "../../../modules/Form/inputProcessing";
 
 export const IPForm = () => {
-	const form = useSelector((state: RootState) => state.form.form);
-  const { handleChangeInputText, handleChangeCheckbox, handleChangeDate } =
-    useForm();
+  const form = useSelector(formSelector);
+  const {
+    handleChangeInputText,
+    handleChangeCheckbox,
+    handleChangeDate,
+    handleChangeFile,
+  } = useForm();
 
   return (
     <>
       <InputText
-				currentValue={form[FieldNames.inn]}
+        currentValue={form[FieldNames.inn]}
         name={FieldNames.inn}
         label="ИНН"
         handleChange={handleChangeInputText}
+				inputProcessing={[onlyNumber]}
       />
-      <InputFile name={FieldNames.innScan} label="Скан ИНН" />
+      <InputFile
+        name={FieldNames.innScan}
+        label="Скан ИНН"
+        handleChange={handleChangeFile}
+      />
       <InputDate
-				currentValue={form[FieldNames.companyRegistrationDate]}
+        currentValue={form[FieldNames.companyRegistrationDate]}
         name={FieldNames.companyRegistrationDate}
         label="Дата регистрации"
         handleChange={handleChangeDate}
       />
       <InputText
-				currentValue={form[FieldNames.ogrnip]}
+        currentValue={form[FieldNames.ogrnip]}
         name={FieldNames.ogrnip}
         label="ОГРНИП"
         handleChange={handleChangeInputText}
+				inputProcessing={[onlyNumber]}
       />
-      <InputFile name={FieldNames.ogrnipScan} label="Скан ОГРНИП" />
+      <InputFile
+        name={FieldNames.ogrnipScan}
+        label="Скан ОГРНИП"
+        handleChange={handleChangeFile}
+      />
       <InputFile
         name={FieldNames.scanLeaseAgreement}
         label="Скан договора аренды помещения (офиса)"
+        handleChange={handleChangeFile}
       />
       <Checkbox
-				currentValue={form[FieldNames.statusContract]}
+        currentValue={form[FieldNames.statusContract]}
         name={FieldNames.statusContract}
         label="Нет договора"
         handleChange={handleChangeCheckbox}
@@ -47,6 +65,7 @@ export const IPForm = () => {
       <InputFile
         name={FieldNames.scanExtractFromEgrip}
         label="Скан выписки из ЕГРИП (не старше 3 месяцев)*"
+        handleChange={handleChangeFile}
       />
     </>
   );

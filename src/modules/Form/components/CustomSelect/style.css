@@ -2,6 +2,7 @@
   background: #fbfbfb;
   border: 1px solid #e4e5e7;
   border-radius: 7px;
+	max-width: 300px;
 	min-width: 300px;
 }
 .custom-select [class*="-ValueContainer"] {

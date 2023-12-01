@@ -1,13 +1,13 @@
-import { call, put, takeEvery } from "redux-saga/effects";
-import { getDictionary } from "../../api/apiCall";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { DictionaryState, updateDictionary } from "../dictionarySlice";
+import { API_URL } from "../../constants/mainRoutes";
 
 export function* rootWatcher() {
-	yield takeEvery("formSlice/changePage", initDictionary)
-};
+  yield takeLatest("formSlice/changePage", initDictionary);
+}
 
 function* initDictionary() {
-	const data: DictionaryState = yield call(getDictionary);
-	console.log(data)
-	yield put(updateDictionary(data));
-};
+  const data: Response = yield call(fetch, API_URL);
+  const res: DictionaryState = yield data.json();
+  yield put(updateDictionary(res));
+}

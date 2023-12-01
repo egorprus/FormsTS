@@ -1,14 +1,17 @@
-// export const composeValidators = (...validators) => value =>
-//   validators.reduce((error, validator) => error || validator(value), undefined)
+import { DefaultUrls } from "../../../models/enums";
+import { errorType } from "../../../models/types";
+import { generalFormValidation } from "../../../pages/GeneralForm/validate";
+import { FieldNames } from "../models";
 
-export const required = (value: string) => value ? undefined : 'Required';
-
-export const mustBeNumber = (value: string) => (isNaN(Number(value)) ? 'Must be a number' : undefined)
-
-export const minLength = (min: number) => (value: string) => value.length >= min ? undefined : `min length is ${min}`;
-
-export const onlyLetters = (value: string) => value.replace(/[^a-zA-Z]/g,'');
-
-export const onlyNumber = (value: string) => value.replace(/\D/, '')
-
-export const currentLength = (length: number) => (value: string) => value.length === length ? undefined : `Number must be ${length} numbers`
+export const validateForm = (pathname: string) => {
+	let errors: errorType = {};
+	switch (pathname) {
+		case DefaultUrls.general:
+			return generalFormValidation();
+		case DefaultUrls.ownership:
+		case DefaultUrls.registerAddress:
+		case DefaultUrls.residentAddress:
+		default:
+			//no default
+	}
+};

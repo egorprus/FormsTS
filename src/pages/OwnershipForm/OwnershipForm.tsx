@@ -1,17 +1,15 @@
 import { useSelector } from "react-redux";
-import { CustomSelect } from "../../modules/Form/components/CustomSelect/CustomSelect";
-import { RootState } from "../../store";
-import { useForm } from "../../hooks/useForm";
+import { CustomSelect } from "../../modules/Form/components/index";
 import { getOwnershipTypeForm } from "./utils/getOwnershipTypeForm";
 import { FieldNames } from "../../modules/Form/models";
+import { dictionarySelector, formSelector } from "../../store/selectors";
+import { useForm } from "../../modules/Form/hooks/useForm";
 
 export const OwnershipForm = () => {
-  const { ownershipTypeOptions } = useSelector(
-    (state: RootState) => state.dictionary.dictionary
-  );
-  const form = useSelector((state: RootState) => state.form.form);
+  const { ownershipTypeOptions } = useSelector(dictionarySelector);
+  const form = useSelector(formSelector);
   const { handleChangeSelect } = useForm();
-
+	console.log(form)
   return (
     <form className="form field-container">
       <CustomSelect

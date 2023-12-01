@@ -26,7 +26,7 @@ export const FormContainer = ({ children }: FormContainerProp) => {
     <section className="main" ref={mainBlock}>
       <FormHeader />
       {children}
-      <FormFooter location={location} />
+      <FormFooter pathname={location.pathname} />
     </section>
   );
 };

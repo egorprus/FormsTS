@@ -1,4 +1,5 @@
 export const getSexIcon = (value: string) => {
+	console.log(value,'v')
   switch (value) {
     case "m":
       return (

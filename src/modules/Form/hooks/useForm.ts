@@ -1,10 +1,10 @@
 import { ChangeEvent, useCallback } from "react";
-import { useAppDispatch } from "../store";
-import { updateForm } from "../store/formSlice";
-import { SelectOption } from "../models/types";
+import { useAppDispatch } from "../../../store";
+import { updateForm } from "../../../store/formSlice";
+import { SelectOption } from "../../../models/types";
 import { ActionMeta, SingleValue } from "react-select";
 import moment from "moment";
-import { FieldNames } from "../modules/Form/models";
+import { FieldNames } from "../models";
 
 interface THook {
 	handleChangeInputText: (value: string, name: string) => void,
@@ -12,6 +12,7 @@ interface THook {
 	handleChangeRadioButton: (e: ChangeEvent<HTMLInputElement>) => void,
 	handleChangeDate: (date: Date | null, fieldName: string) => void,
 	handleChangeCheckbox: (e: ChangeEvent<HTMLInputElement>) => void,
+	handleChangeFile: (img: string | ArrayBuffer, name: string) => void,
 }
 export const useForm = (): THook => {
   const dispatch = useAppDispatch();
@@ -47,6 +48,9 @@ export const useForm = (): THook => {
 		const {name, checked} = e.target;
 		dispatch(updateForm({[name]: checked}))
 	};
+	const handleChangeFile = (imgBase64: string | ArrayBuffer, name: string) => {
+		dispatch(updateForm({[name]: imgBase64}));
+	}
 
-  return { handleChangeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox };
+  return { handleChangeInputText, handleChangeSelect, handleChangeRadioButton, handleChangeDate, handleChangeCheckbox, handleChangeFile };
 };

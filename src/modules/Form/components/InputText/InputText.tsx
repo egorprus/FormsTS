@@ -6,16 +6,14 @@ import { FieldNames } from "../../models";
 
 interface InputTextProp {
   label: string;
-  require?: boolean;
   name: Partial<FieldNames>;
   inputProcessing?: ValidatorsType[];
   placeholder?: string;
   handleChange: (value: string, name: string) => void;
   currentValue: string | undefined;
 }
-export const InputText = ({
+const InputText = ({
   label,
-  require,
   inputProcessing,
   name,
   placeholder,
@@ -35,14 +33,13 @@ export const InputText = ({
 
   return (
     <div className="field field-container field-text">
-      <FieldLabel name={name} label={label} require={require} />
+      <FieldLabel name={name} label={label} require={true} />
       <div className="field__input-wrapper">
         <input
           id={name}
           name={name}
           className="field__input"
           type="text"
-          required={require}
           placeholder={placeholder}
           onChange={handleChangeInputText}
           value={currentValue}
@@ -51,3 +48,5 @@ export const InputText = ({
     </div>
   );
 };
+
+export default InputText;

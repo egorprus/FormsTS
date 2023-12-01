@@ -3,5 +3,4 @@ export enum DefaultUrls {
   ownership = "/ownership",
   registerAddress = "/registration-address",
   residentAddress = "/residential-address",
-  socialMedia = "/social-media",
 };
